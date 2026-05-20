@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five sessions worth booking — IMMA Collective</title>
+<style>
+  :root {
+    /* IMMA Collective palette */
+    --bg: #faf8f4;
+    --ink: #0a0e1a;
+    --muted: #6b7280;
+    --accent: #0623b3;          /* electric blue — primary */
+    --accent-light: #95aefd;
+    --accent-soft: #eaeefd;
+    --peach: #ff9d73;           /* peach — reserved for the gift moments */
+    --peach-soft: #fff1e9;
+    --peach-edge: #ffd1bb;
+    --card-bg: #ffffff;
+    --border: #e6e3da;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 28px 64px; }
+
+  /* Header */
+  header { margin-bottom: 56px; }
+  .logo-top { display: block; max-width: 120px; height: auto; margin-bottom: 28px; }
+  .logo-footer { display: inline-block; max-width: 75px; height: auto; margin-bottom: 12px; opacity: 0.7; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  h1 { font-family: "Georgia", "Times New Roman", serif; font-weight: 500; font-size: 46px; line-height: 1.12; margin: 0 0 26px; letter-spacing: -0.01em; }
+  .intro p { font-size: 17px; line-height: 1.55; color: var(--ink); margin: 0 0 16px; }
+  .intro p:last-of-type { margin-bottom: 0; }
+  .byline { display: flex; align-items: center; gap: 14px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .byline-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-family: Georgia, serif; font-size: 18px; font-weight: 500; }
+  .byline-name { font-size: 14px; }
+  .byline-name strong { display: block; font-weight: 600; color: var(--ink); font-size: 15px; }
+  .byline-name span { color: var(--muted); }
+
+  /* Member section */
+  .member { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px; margin: 32px 0; }
+  .member-head { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+  .avatar {
+    flex: 0 0 84px; width: 84px; height: 84px; border-radius: 50%;
+    object-fit: cover; background: var(--accent); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif; font-size: 26px; font-weight: 500;
+    overflow: hidden;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .name { font-family: Georgia, serif; font-size: 26px; font-weight: 500; margin: 6px 0 4px; line-height: 1.2; }
+  .role { font-size: 14px; color: var(--muted); margin: 0; }
+
+  /* Gift block — peach so it pops */
+  .gift {
+    background: var(--peach-soft);
+    border: 1px solid var(--peach-edge);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 0 0 26px;
+  }
+  .gift-tag {
+    display: inline-block; background: var(--peach); color: var(--ink);
+    font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 700; padding: 4px 10px; border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .gift-name {
+    font-family: Georgia, serif; font-size: 22px; font-weight: 500;
+    line-height: 1.25; margin: 0 0 10px; color: var(--ink);
+  }
+  .gift-desc { font-size: 15.5px; line-height: 1.55; color: var(--ink); margin: 0; }
+
+  /* About */
+  .about { font-size: 16px; line-height: 1.55; color: var(--ink); margin: 0 0 22px; }
+
+  /* This is for you if */
+  .fit { margin: 0 0 24px; }
+  .fit h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+  .fit ul { margin: 0; padding-left: 22px; }
+  .fit li { font-size: 15px; color: var(--ink); margin-bottom: 5px; line-height: 1.5; }
+
+  /* Quote */
+  .trigger {
+    font-style: italic; color: var(--ink); font-size: 15.5px; line-height: 1.5;
+    padding: 14px 18px; background: var(--accent-soft); border-radius: 6px;
+    margin: 0 0 24px; border-left: 2px solid var(--accent);
+  }
+  .trigger::before { content: "“"; font-family: Georgia, serif; font-size: 24px; color: var(--accent); margin-right: 2px; vertical-align: -2px; }
+  .trigger::after  { content: "”"; font-family: Georgia, serif; font-size: 24px; color: var(--accent); margin-left: 2px;  vertical-align: -2px; }
+
+  /* CTA */
+  .cta {
+    display: inline-block; background: var(--ink); color: white;
+    padding: 11px 22px; border-radius: 6px; text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: background 0.15s; cursor: pointer;
+  }
+  .cta:hover { background: var(--accent); }
+
+  /* Request form section */
+  .request {
+    margin-top: 64px; padding: 40px 36px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  }
+  .request h2 { font-family: Georgia, serif; font-size: 30px; font-weight: 500; margin: 0 0 14px; line-height: 1.2; }
+  .request .sub { font-size: 16px; line-height: 1.55; color: var(--ink); margin: 0 0 26px; }
+  .tally-embed { border-radius: 6px; overflow: hidden; }
+
+  footer { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); text-align: center; }
+  footer p { color: var(--muted); font-size: 13px; margin: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!--
+  PHOTOS:
+  Save each photo into the ./images/ folder next to this HTML file,
+  using these exact filenames:
+    images/lilli.jpg     ← Lilli (for the byline at top)
+    images/ariel.jpg
+    images/tiana.jpg
+    images/rouse.jpg     ← Sara + Aradhana together
+    images/christine.jpg
+    images/brendan.jpg
+  Square crops work best. If a file is missing, the section falls back
+  to initials automatically.
+-->
+
+<header>
+  <img src="images/IMMA_logo.png" alt="IMMA Collective" class="logo-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <div class="eyebrow" style="display:none;">IMMA Collective</div>
+  <h1>Five sessions worth booking.</h1>
+
+  <div class="intro">
+    <p>I run IMMA Collective, a group of <strong>senior consultants I've spent the last year getting to know, vetting, and learning to trust.</strong> The kind of people who'd rather build a real relationship with the right team than win another RFP.</p>
+    <p>Each of them offers a session like the ones below, <strong>free or discounted, to organizations they'd genuinely like to work with one day.</strong> It's how they meet people on their own terms, and how I introduce them to teams I think they'd want to know.</p>
+    <p><strong>No obligation, on either side.</strong> If something below lands, request an intro and I'll set it up. If you'd rather describe what you're looking for, or ask about other consultants in the collective, do that in the same form. There are more vetted people I can introduce you to, and it's useful for me to know what you actually need.</p>
+  </div>
+
+  <div class="byline">
+    <div class="avatar byline-photo">
+      <img src="images/Lilli.png" alt="Lilli Graf" onerror="this.parentElement.textContent='LG';this.parentElement.style.fontSize='18px';">
+    </div>
+    <div class="byline-name">
+      <strong>Lilli Graf</strong>
+      <span>Founder, IMMA Collective</span>
+    </div>
+  </div>
+</header>
+
+<!-- ARIEL -->
+<section class="member" id="ariel">
+  <div class="member-head">
+    <div class="avatar">
+      <img src="images/Ariel.png" alt="Ariel Chamberlain" onerror="this.parentElement.textContent='AC';">
+    </div>
+    <div>
+      <p class="name">Ariel Chamberlain</p>
+      <p class="role">Octopus Pond Consulting · Fractional data lead</p>
+    </div>
+  </div>
+
+  <div class="gift">
+    <span class="gift-tag">The gift · Normally $300</span>
+    <p class="gift-name">Free Data Friction Diagnostic</p>
+    <p class="gift-desc">A 55-minute working session with Ariel to surface what's quietly slowing your team down inside your data systems. You'll leave with a clear view of the one thing to focus on first, plus a written executive summary you can share internally.</p>
+  </div>
+
+  <p class="about">Ariel works with growing mission-driven teams to clean up and reshape CRM and data systems, so they stop losing information and start building stronger relationships.</p>
+
+  <div class="fit">
+    <h4>This is for you if</h4>
+    <ul>
+      <li>You run a nonprofit, B Corp, community or climate org</li>
+      <li>You have 5 to 100 people on the team</li>
+      <li>You use Airtable, Notion or a CRM that's started getting messy</li>
+      <li>You care about members, donors and partners as much as customers</li>
+    </ul>
+  </div>
+
+  <p class="trigger">We keep meaning to do better follow-ups, but every time we look, the data isn't there.</p>
+
+  <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv">Request an intro to Ariel</a>
+</section>
+
+<!-- TIANA -->
+<section class="member" id="tiana">
+  <div class="member-head">
+    <div class="avatar">
+      <img src="images/Tiana.png" alt="Tiana Veldwisch" onerror="this.parentElement.textContent='TV';">
+    </div>
+    <div>
+      <p class="name">Tiana Veldwisch</p>
+      <p class="role">Team dynamics &amp; ops effectiveness for climate-solutions orgs</p>
+    </div>
+  </div>
+
+  <div class="gift">
+    <span class="gift-tag">The gift · 45 minutes</span>
+    <p class="gift-name">Team Scheming Call</p>
+    <p class="gift-desc">A short working diagnostic to figure out where work is getting stuck on your team. You'll look at how work currently moves between people, identify what's slowing things down, and leave with one specific lever to pull.</p>
+  </div>
+
+  <p class="about">Tiana works with leaders of growing climate teams that struggle with delegation and collaboration, so their teams can actually get things done, together.</p>
+
+  <div class="fit">
+    <h4>This is for you if</h4>
+    <ul>
+      <li>You lead a climate or cleantech team of 10 to 100 people</li>
+      <li>You're post-funding and trying to scale how the team works</li>
+      <li>Work keeps bouncing back to your plate</li>
+    </ul>
+  </div>
+
+  <p class="trigger">We have more meetings, but less gets done. And everything still ends up on my plate.</p>
+
+  <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv">Request an intro to Tiana</a>
+</section>
+
+<!-- ROUSE -->
+<section class="member" id="rouse">
+  <div class="member-head">
+    <div class="avatar">
+      <img src="images/Rouse.png" alt="Sara Frisk + Aradhana Goel" onerror="this.parentElement.textContent='RS';this.parentElement.style.fontSize='20px';">
+    </div>
+    <div>
+      <p class="name">Rouse Studio</p>
+      <p class="role">Sara Frisk + Aradhana Goel · Product strategy and design (both ex-IDEO)</p>
+    </div>
+  </div>
+
+  <div class="gift">
+    <span class="gift-tag">The gift · 60-minute working session</span>
+    <p class="gift-name">Clarity Call</p>
+    <p class="gift-desc">Bring a direction you're pushing or a product question you're stuck on. Sara and Aradhana pressure-test it, surface the real problem underneath, and help you see the best path forward.</p>
+  </div>
+
+  <p class="about">Sara and Aradhana work with leaders at decision points, using deep user research and focused strategy to turn uncertain ideas into validated moves. Between them, they've shaped products for early-stage tech, public institutions, and global enterprise (Blazerr, NYPL, Delta).</p>
+
+  <div class="fit">
+    <h4>This is for you if</h4>
+    <ul>
+      <li>You're a CEO, CTO, CPO at a small-to-mid org, or an SVP at a bigger one</li>
+      <li>You're launching something new, redesigning a core product, or integrating AI</li>
+      <li>You have a directive but need help getting there</li>
+    </ul>
+  </div>
+
+  <p class="trigger">We have a direction, but the cost of finding out it's wrong is too high.</p>
+
+  <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv">Request an intro to Rouse</a>
+</section>
+
+<!-- CHRISTINE -->
+<section class="member" id="christine">
+  <div class="member-head">
+    <div class="avatar">
+      <img src="images/Christine.png" alt="Christine Maggi" onerror="this.parentElement.textContent='CM';">
+    </div>
+    <div>
+      <p class="name">Christine Maggi</p>
+      <p class="role">Design Gal Studio · Web and UX designer</p>
+    </div>
+  </div>
+
+  <div class="gift">
+    <span class="gift-tag">The gift · Free</span>
+    <p class="gift-name">Femtech UX Checkup</p>
+    <p class="gift-desc">A free review for femtech and women's health products. Christine spots the friction in your sign-up flow, education content, or core funnel, and tells you what to fix first. You leave knowing exactly where the biggest design wins are hiding.</p>
+  </div>
+
+  <p class="about">Christine helps femtech and women's health startups launch and scale with web and product design that converts: credible, warm, and clear.</p>
+
+  <div class="fit">
+    <h4>This is for you if</h4>
+    <ul>
+      <li>You're a founder or product/marketing/growth lead at a femtech, women's health, wellness or mental health startup</li>
+      <li>You're pre-seed through Series B/C</li>
+      <li>You're going to market, plateauing, or refreshing after a funding round</li>
+    </ul>
+  </div>
+
+  <p class="trigger">The product works. But the way we're showing it isn't doing it justice.</p>
+
+  <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv">Request an intro to Christine</a>
+</section>
+
+<!-- BRENDAN -->
+<section class="member" id="brendan">
+  <div class="member-head">
+    <div class="avatar">
+      <img src="images/Brendan.png" alt="Brendan Rodgers" onerror="this.parentElement.textContent='BR';">
+    </div>
+    <div>
+      <p class="name">Brendan Rodgers</p>
+      <p class="role">Thread &amp; Stack · Brand strategy and systems (Notion + AI)</p>
+    </div>
+  </div>
+
+  <div class="gift">
+    <span class="gift-tag">The gift · 2 hours · 15% off £395</span>
+    <p class="gift-name">Notion Triage Session</p>
+    <p class="gift-desc">A structured review of your Notion setup that maps a path through the chaos. You walk out with a prioritised action plan that tells you exactly what to fix, in what order, and why. Session recording, notes, and the action plan all included.</p>
+  </div>
+
+  <p class="about">Brendan works with purpose-led founders on brand strategy and operations systems. Notion at the core, and AI where it earns its place. He's a Notion Certified Partner.</p>
+
+  <div class="fit">
+    <h4>This is for you if</h4>
+    <ul>
+      <li>You're a founder or operator with a sprawling Notion workspace</li>
+      <li>You want AI doing real operational work, not sitting as a novelty</li>
+      <li>You're building competitive advantage through how the business runs</li>
+    </ul>
+  </div>
+
+  <p class="trigger">We've got pages on pages in Notion, and nobody knows what lives where.</p>
+
+  <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv">Request an intro to Brendan</a>
+</section>
+
+<!-- REQUEST FORM -->
+<section class="request" id="request">
+  <h2>Request an intro or start a conversation</h2>
+  <p class="sub">Whether you'd like an intro to one of the consultants above, want to hear about others in the Collective, or just want to describe what you're looking for — fill in the form and I'll be in touch, usually within a day or two.</p>
+
+  <div class="tally-embed">
+    <iframe
+      data-tally-src="https://tally.so/embed/RGvqVv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+      loading="lazy"
+      width="100%"
+      height="300"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      title="Request an intro"
+      style="display: block;"></iframe>
+  </div>
+
+  <div style="margin-top: 16px; text-align: center;">
+    <a class="cta" target="_blank" rel="noopener" href="https://tally.so/r/RGvqVv" style="padding: 14px 28px; font-size: 15px;">Open the form in a new page</a>
+  </div>
+</section>
+
+<script>
+  // Tally embed bootstrap
+  var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}
+</script>
+
+<footer>
+  <img src="images/IMMA_logo.png" alt="IMMA Collective" class="logo-footer" onerror="this.style.display='none';">
+  <p>IMMA Collective · lilli@immacollective.com</p>
+</footer>
+
+</div>
+</body>
+</html>
